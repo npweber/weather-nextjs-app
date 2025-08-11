@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 
 import WeatherData from "./components/weather-data";
-import { getCityFromBrowserIP } from "./lib/geolocate-ip";
 
 export default function Home() {
 
@@ -21,17 +20,15 @@ export default function Home() {
       // Try to determine the user's city based on their IP address
       try {
         // Fetch the user's IP address
-        const response = await fetch('/api/ip');
-        const data = await response.json();
-        console.log(data);
-
-        // Use a hardcoded IP address for testing
-        // while we don't have a vercel hosted server.
-        const ip = "75.223.225.147";
+        const responseIP = await fetch('/api/ip');
+        const dataResponseIP = await responseIP.json();
 
         // Get the city from the IP address & set the user's city
-        const city = await getCityFromBrowserIP(ip);
-        setUserCity(city);
+        const responseCity = await fetch(`/api/city?ip=${dataResponseIP.ip}`);
+        const dataResponseCity = await responseCity.json();
+        console.log(dataResponseCity);
+
+        setUserCity(dataResponseCity.city);
       } catch (error) {
         // If the user's city cannot be determined, set the user's city to "City"
         // and log the error
