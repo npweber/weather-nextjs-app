@@ -1,5 +1,3 @@
-'use server'
-
 import { IPinfoWrapper } from 'node-ipinfo';
 
 // Geolocate the browser IP address to get the city
