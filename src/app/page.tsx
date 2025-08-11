@@ -23,6 +23,7 @@ export default function Home() {
         // Fetch the user's IP address
         const response = await fetch('/api/ip');
         const data = await response.json();
+        console.log(data);
 
         // Use a hardcoded IP address for testing
         // while we don't have a vercel hosted server.
