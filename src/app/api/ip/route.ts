@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Get IP from various headers (handles different proxy configurations)
-export async function GET(request: NextRequest) {
+//
+// Route: /api/ip
+//
+// Returns the IP address of the browser
+export async function GET(request: NextRequest) : Promise<NextResponse> {
   // Check the x-forwarded-for header for the IP address
   let forwardedIPv4 = request.headers.get('x-forwarded-for')?.split(',')[0];
 
