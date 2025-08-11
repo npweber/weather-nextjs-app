@@ -26,7 +26,6 @@ export default function Home() {
         // Get the city from the IP address & set the user's city
         const responseCity = await fetch(`/api/city?ip=${dataResponseIP.ip}`);
         const dataResponseCity = await responseCity.json();
-        console.log(dataResponseCity);
 
         setUserCity(dataResponseCity.city);
       } catch (error) {

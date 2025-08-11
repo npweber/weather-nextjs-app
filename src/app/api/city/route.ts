@@ -24,7 +24,6 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
       // Use IPinfo to lookup the browser IP address and return the city
       const data = await ipinfo.lookupIp(request.nextUrl.searchParams.get('ip') || "")
-      console.log(data);
       return NextResponse.json({ city: data.city })
     } catch (err) {
       // If the IPInfo geolocation fails, throw an error
